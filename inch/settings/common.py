@@ -1,7 +1,10 @@
 # Django settings for inch project.
+import os, sys
 
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
+
+PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
@@ -83,7 +86,7 @@ STATICFILES_FINDERS = (
 )
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = '35!45*xewuc+5$j$g3q^!jhiu6s83@6rd3oi%l271is5e^14-^'
+SECRET_KEY = os.environ.get('SECRET_KEY', 'change-this-key-to-something-secure')
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
@@ -108,9 +111,7 @@ ROOT_URLCONF = 'inch.urls'
 WSGI_APPLICATION = 'inch.wsgi.application'
 
 TEMPLATE_DIRS = (
-    # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
+    os.path.join(PROJECT_ROOT, 'templates'),
 )
 
 INSTALLED_APPS = (
