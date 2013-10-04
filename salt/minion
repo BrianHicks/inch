@@ -1,0 +1,5 @@
+# -*- mode: sls -*-
+# vi: set ft=sls :
+file_client: local
+grains:
+  local: true
